@@ -1,0 +1,54 @@
+﻿syntax = "proto3";
+
+package product;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "Infrastructure.Protos";
+
+service ProductsService {
+	rpc GetProducts (ProductPaginationFilter) returns (stream Product);
+	rpc GetProductById (ProductIdFilter) returns (Product);
+	rpc AddProduct (AddProductPayload) returns (Product);
+	rpc UpdateProduct (UpdateProductPayload) returns (Product);
+	rpc DeleteProduct (ProductIdFilter) returns (google.protobuf.Empty);
+}
+
+message Product {
+	string Id = 1;
+	string Sku = 2;
+	string Name = 3;
+	google.protobuf.Timestamp ManufacturedDate = 4;
+	double ListPrice = 5;
+	google.protobuf.Timestamp CreatedAt = 6;
+	google.protobuf.Timestamp UpdatedAt = 7;
+}
+
+message ProductPaginationFilter {
+	int32 limit = 1;
+	optional string searchAfter = 2;
+}
+
+message ProductIdFilter {
+	string Id = 1;
+}
+
+message AddProductPayload {
+	string Sku = 1;
+	string Name = 2;
+	google.protobuf.Timestamp ManufacturedDate = 3;
+	double ListPrice = 4;
+}
+
+message UpdateProductPayloadObject {
+	string Sku = 1;
+	string Name = 2;
+	google.protobuf.Timestamp ManufacturedDate = 3;
+	double ListPrice = 4;
+}
+
+message UpdateProductPayload {
+	string Id = 1;
+	UpdateProductPayloadObject payload = 2;
+}
