@@ -13,7 +13,7 @@ In this example we implement 5 restful API(s) which make a gRPC call to the gRPC
 
 Following is a high-level flow diagram between the client, gRPC client stub api and the gRPC server.
 
-![Flow Diagram](./gRPC%20Gateway%20API.png)
+<image src="./gRPC%20Gateway%20API.png"/>
 
 <hr/>
 
