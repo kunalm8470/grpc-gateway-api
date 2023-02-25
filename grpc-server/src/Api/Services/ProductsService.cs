@@ -6,7 +6,6 @@ using Domain.Interfaces;
 using Domain.Models.Requests;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using Microsoft.AspNetCore.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using static Api.Protos.ProductsService;
